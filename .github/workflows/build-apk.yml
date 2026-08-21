@@ -11,16 +11,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Extract project
-        run: |
-          unzip -o TruckSimulator_GitHub_APK.zip -d extracted
-          cd extracted/TruckSimulator_GitHub_APK
-          cp -r . ../project
-
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
 
       - name: Setup Java
         uses: actions/setup-java@v4
@@ -29,23 +23,20 @@ jobs:
           java-version: 21
 
       - name: Install dependencies
-        working-directory: extracted/project
         run: npm install
 
-      - name: Add Android
-        working-directory: extracted/project
+      - name: Add Android platform
         run: npx cap add android
 
-      - name: Sync
-        working-directory: extracted/project
+      - name: Sync Capacitor
         run: npx cap sync android
 
       - name: Build APK
-        working-directory: extracted/project/android
+        working-directory: android
         run: chmod +x gradlew && ./gradlew assembleDebug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: Truck-Simulator-APK
-          path: extracted/project/android/app/build/outputs/apk/debug/app-debug.apk
+          path: android/app/build/outputs/apk/debug/app-debug.apk
