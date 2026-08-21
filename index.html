@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>Truck Simulator Mobile V3</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="hud">
+  <div class="hudbox">
+    <span>🚛 <b id="speed">0</b> كم/س</span>
+    <span>⛽ <b id="fuel">100</b>%</span>
+    <span>💰 $<b id="money">500</b></span>
+    <span>🕐 <b id="clock">08:00</b></span>
+  </div>
+  <div id="mission">📦 توصيل الشحنة إلى الوجهة الصفراء</div>
+</div>
+<div id="status"></div>
+<div id="loading">جاري تحميل Truck Simulator V3...</div>
+<div id="controls">
+  <button id="left">◀</button><button id="right">▶</button>
+  <button id="brake">فرامل</button><button id="gas">▲</button>
+  <button id="camera">📷</button>
+</div>
+<script type="module" src="game.js"></script>
+</body>
+</html>
